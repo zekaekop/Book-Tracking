@@ -45,4 +45,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <input type="password" name="repeat_password" placeholder="Repeat Password" required>
     <button type="submit" name="register_submit">Register</button>
 
+    <a href="login.php"><small>have an account?</small></a>
+
 </form>
