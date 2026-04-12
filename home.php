@@ -2,6 +2,8 @@
 
 include("base.php");
 
+redirect_unauth_users();
+
 $query = $pdo->query("SELECT * FROM books");
 $books = $query->fetchAll();
 
