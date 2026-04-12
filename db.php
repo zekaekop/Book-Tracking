@@ -12,4 +12,11 @@ try {
     die("Connection with the DB failed" . $e->getMessage());
 }
 
+function authenticate_account() {
+    if (empty($user)) {
+        header("logout.php");
+        exit();
+    }
+}
+
 ?>
