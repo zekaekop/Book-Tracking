@@ -12,9 +12,18 @@ try {
     die("Connection with the DB failed" . $e->getMessage());
 }
 
-function authenticate_account() {
-    if (empty($user)) {
-        header("logout.php");
+session_start();
+
+function logout_account() {
+    if (isset($_SESSION["user"])) {
+        header("Location: logout.php");
+        exit();
+    }
+}
+
+function redirect_unauth_users() {
+    if (empty($_SESSION["user"])) {
+        header("Location: login.php");
         exit();
     }
 }
