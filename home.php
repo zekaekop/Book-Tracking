@@ -12,10 +12,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $query = $pdo->prepare("UPDATE books SET requested_user_id = ? WHERE id = ?");
         $query->execute([$_SESSION["user"]["id"], $_POST["book_request_submit"]]);
     }
-
-    if (isset($_POST["logout_submit"])) {
-        logout_account();
-    }
 }
 ?>
 
@@ -33,7 +29,4 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             </li>
         <?php endforeach ?>
     </ul>
-
-    <button type="submit" name="logout_submit">Logout</button>
-
 </form>
