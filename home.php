@@ -3,9 +3,18 @@
 include("base.php");
 
 $query = $pdo->query("SELECT * FROM books");
-// $query->execute();
 $books = $query->fetchAll();
 
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    if (isset($_POST["book_request_submit"])) {
+        $query = $pdo->prepare("UPDATE books SET requested_user_id = ? WHERE id = ?");
+        $query->execute([$_SESSION["user"]["id"], $_POST["book_request_submit"]]);
+    }
+
+    if (isset($_POST["logout_submit"])) {
+        logout_account();
+    }
+}
 ?>
 
 <h1>Home page</h1>
@@ -13,10 +22,16 @@ $books = $query->fetchAll();
 
 <h2>Available books</h2>
 
-<ul style="list-style-type: none;">
-    <?php foreach($books as $book): ?>
-        <li>
-            <?= htmlspecialchars($book["title"]);?> 
-        </li>
-    <?php endforeach ?>
-</ul>
+<form method="POST" action="">
+    <ul style="list-style-type: none;">
+        <?php foreach($books as $book): ?>
+            <li>
+                <?= htmlspecialchars($book["title"]);?> 
+                <button type="submit" name="book_request_submit" value="<?= $book["id"] ?>">Request</button>
+            </li>
+        <?php endforeach ?>
+    </ul>
+
+    <button type="submit" name="logout_submit">Logout</button>
+
+</form>
