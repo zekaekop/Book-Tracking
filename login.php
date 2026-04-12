@@ -17,6 +17,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if (isset($user)){
             if (password_verify($password, $user['password'])) {
                 $login_status = "User successfully";
+                $_SESSION["user"] = $user;
                 header("Location: home.php");
                 exit();
             } else {
