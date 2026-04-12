@@ -36,4 +36,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     </tr>
 </table>
 
+<form method="POST" action="">
 <button type="submit" name="logout_submit">Logout</button>
+</form>
