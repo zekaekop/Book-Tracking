@@ -30,6 +30,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 }
 ?>
 
+<div class="container">
+
 <form method="POST">
 
     <p><?= htmlspecialchars($login_status) ?></p>
@@ -45,3 +47,5 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <a href="register.php"><small>Don't have an account?</small></a>
 
 </form>
+
+</div>
