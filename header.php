@@ -1,9 +1,13 @@
-
-<nav>
-    <ul style="list-style-type: none;">
-        <li><a href="home.php">Home</a></li>
-        <li><a href="add_books.php">Add Books</a></li>
-        <li><a href="statistics.php">Statistics</a></li>
-        <li><a href="Account.php">Account</a></li>
-    </ul>
-</nav>
+<div class="container header_card w-100">
+    <div class="nav navbar">
+        <nav class="d-flex">
+            <h5>Book Tracking</h5>
+            <ul class="nav w-100" style="list-style-type: none;">
+                <li class="nav-item"><a href="home.php">Home</a></li>
+                <li class="nav-item"><a href="add_books.php">Add Books</a></li>
+                <li class="nav-item"><a href="statistics.php">Statistics</a></li>
+                <li class="nav-item"><a href="Account.php">Account</a></li>
+            </ul>
+        </nav>
+    </div>
+</div>
