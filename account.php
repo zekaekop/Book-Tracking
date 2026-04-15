@@ -5,6 +5,18 @@ include("base.php");
 
 redirect_unauth_users();
 
+// Source - https://stackoverflow.com/a/19189952
+// Posted by Michael
+// Retrieved 2026-04-15, License - CC BY-SA 3.0
+
+// $ip = getenv('HTTP_CLIENT_IP')?:
+// getenv('HTTP_X_FORWARDED_FOR')?:
+// getenv('HTTP_X_FORWARDED')?:
+// getenv('HTTP_FORWARDED_FOR')?:
+// getenv('HTTP_FORWARDED')?:
+// getenv('REMOTE_ADDR');
+
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (isset($_POST["logout_submit"])) {
         logout_account();
