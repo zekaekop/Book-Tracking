@@ -1,6 +1,10 @@
 :root{
     --random: blue;
     --header-color: rgb(226, 226, 226);
+
+    --compact-book: rgb(200, 200, 200);
+
+    --compact-book-2: rgb(175, 175, 175);
 }
 
 .header_card{
@@ -9,4 +13,12 @@
 
 .footer_card{
     background-color: var(--header-color);
+}
+
+.compact_book_gray{
+    background-color: var(--compact-book);
+}
+
+.compact_book_dark_gray{
+    background-color: var(--compact-book-2);
 }
