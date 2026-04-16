@@ -1,6 +1,6 @@
 <?php 
 
-include("base.php");
+include("base_top.php");
 
 redirect_unauth_users();
 
@@ -15,8 +15,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 }
 ?>
 
+<!-- 
+Difference between home and books is, home will be simplistic only showing a certain amount of books or popular ones.
+And books.php will allow a more advanced way of using the site with searches filters statistics etc.
+-->
+
 <h1>Home page</h1>
 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda distinctio cupiditate quibusdam iste magnam officia in maiores laboriosam obcaecati, quas repellat itaque, optio quidem. Incidunt dolorem cum reiciendis placeat fuga?</p>
+
+<form action="" method="POST">
+    <button type="submit">Im feeling lucky</button>
+</form>
+
+<!-- use fact api to fetch facts -->
+<small>Fun Fact: <?php htmlspecialchars("fact");?> </small>
 
 <hr>
 
@@ -32,3 +44,5 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <?php endforeach ?>
     </ul>
 </form>
+
+<?php include("base_bottom.php"); ?>

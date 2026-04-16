@@ -1,6 +1,6 @@
 <?php
 
-include("base.php");
+include("base_top.php");
 
 $login_status = "";
 
@@ -28,24 +28,44 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
     }
 }
+
+// if (empty($_SESSION['token'])) {
+//     $_SESSION['token'] = bin2hex(random_bytes(32));
+// }
+// $token = $_SESSION['token'];
+
 ?>
 
 <div class="container">
 
-<form method="POST">
+    <form method="POST">
 
-    <p><?= htmlspecialchars($login_status) ?></p>
+        <!-- Status -->
+        <p><?= htmlspecialchars($login_status) ?></p>
 
-    <input type="text" name="username" placeholder="Username" required>
-    <br>
-    <input type="text" name="email" placeholder="Email" required>
-    <br>
-    <input type="password" name="password" placeholder="Password" required>
-    <br>
-    <button type="submit" name="login_submit">Login</button>
+        <!-- Login -->
+        <input type="text" name="username" placeholder="Username" required>
+        <br>
+        <input type="text" name="email" placeholder="Email" required>
+        <br>
+        <input type="password" name="password" placeholder="Password" required>
+        <br>
+        <button type="submit" name="login_submit">Login</button>
 
-    <a href="register.php"><small>Don't have an account?</small></a>
+        <a href="register.php"><small>Don't have an account?</small></a>
 
-</form>
+        <a href="info.php"><small>info</small></a>
+
+        <!-- Anon -->
+        <div class="container">
+            <div class="">
+                <p>Request a book without an account</p>
+                <button>Request a book</button>
+            </div>
+        </div>
+
+    </form>
 
 </div>
+
+<?php include("base_bottom.php"); ?>
