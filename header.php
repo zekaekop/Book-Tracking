@@ -1,5 +1,5 @@
-<div class="container header_card w-100">
-    <div class="nav navbar">
+<div class="container w-100">
+    <div class="nav navbar header_card">
         <nav class="d-flex">
             <h5>Book Tracking</h5>
             <ul class="nav w-100" style="list-style-type: none;">
