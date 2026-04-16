@@ -4,7 +4,7 @@ include("base_top.php");
 
 $login_status = "";
 
-$query = $pdo->query("SELECT * FROM books");
+$query = $pdo->query("SELECT * FROM books LIMIT 5");
 $books = $query->fetchAll();
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -85,7 +85,7 @@ function flip_compact_book_style($i) {
                         <?php foreach($books as $book): ?>
                             <li class="d-flex <?= flip_compact_book_style($book["id"]) ?>">
                                 <p><?= htmlspecialchars($book["title"]);?> </p>
-                                <button class="ms-auto" type="submit" name="book_request_submit" value="<?= $book["id"] ?>">Request</button>
+                                <button class="ms-auto" type="submit" name="book_request_submit" value="<?= $book["id"] ?>">Details</button>
                             </li>
                         <?php endforeach ?>
                     </ul>
