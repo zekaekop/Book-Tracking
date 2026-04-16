@@ -1,4 +1,12 @@
+:root{
+    --random: blue;
+    --header-color: rgb(226, 226, 226);
+}
 
 .header_card{
-    background-color: red;
+    background-color: var(--header-color);
+}
+
+.footer_card{
+    background-color: var(--header-color);
 }
