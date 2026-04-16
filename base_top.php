@@ -20,9 +20,5 @@ include("db.php");
 <?php
 
 include("header.php");
-include("footer.php");
 
 ?>
-    
-</body>
-</html>
