@@ -28,6 +28,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $query = $pdo->prepare("UPDATE books SET requested_user_id = ? WHERE id = ?");
         $query->execute([$_SESSION["user"]["id"], $_POST["book_request_submit"]]);
     }
+    if (isset($_POST["book_detail_submit"])) {
+        $book_id = $_POST["book_detail_submit"];
+        header("Location: detail.php?book=$book_id");
+        exit();
+     }
 }
 ?>
 
