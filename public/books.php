@@ -5,20 +5,8 @@ require_once __DIR__ . "/../src/template/base_top.php";
 
 redirect_unauth_users();
 
-$query_popular = $pdo->query("SELECT * FROM books    LIMIT 10");
-$books_popular = $query_popular->fetchAll();
-
-$query_recent = $pdo->query("SELECT * FROM books LIMIT 10");
-$books_recent = $query_recent->fetchAll();
-
-$query_request = $pdo->query("SELECT * FROM books LIMIT 10");
-$books_requests = $query_request->fetchAll();
-
-$books = array(
-    "most popular" => $books_popular,
-    "most recent" => $books_recent,
-    "most requests" => $books_requests,
-);
+$query = $pdo->query("SELECT * FROM books");
+$books = $query->fetchAll();
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (isset($_POST["book_request_submit"])) {
@@ -41,33 +29,17 @@ And books.php will allow a more advanced way of using the site with searches fil
 
     <h2>Available books</h2>
 
-    <form method="POST" action="">
-
-        <!-- most popular -->
+        <form method="POST" action="">
         <ul style="list-style-type: none;">
-            <?php 
-            foreach($books["most popular"] as $book) {
-                include("book_individual.php");
-            }
-            ?>
-        </ul>
-
-        <!-- most recent -->
-        <ul style="list-style-type: none;">
-            <?php foreach($books["most recent"] as $book) {
-                include("book_individual.php");
-            }
-            ?>
-        </ul>
-
-        <!-- most requests -->
-        <ul style="list-style-type: none;">
-            <?php foreach($books["most requests"] as $book)  {
-                include("book_individual.php");
-            }
-            ?>
+            <?php foreach($books as $book): ?>
+                <li>
+                    <?= htmlspecialchars($book["title"]);?> 
+                    <button type="submit" name="book_request_submit" value="<?= $book["id"] ?>">Detail</button>
+                </li>
+            <?php endforeach ?>
         </ul>
     </form>
+
 </div>
 
 <?php require_once __DIR__ . '/../src/template/base_bottom.php'; ?>

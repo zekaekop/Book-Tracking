@@ -26,6 +26,9 @@ function get_statistics() {
 
 <div class="container">
     <h1>Site Statistics</h1>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda distinctio cupiditate quibusdam iste magnam officia in maiores laboriosam obcaecati, quas repellat itaque, optio quidem. Incidunt dolorem cum reiciendis placeat fuga?</p>
+
+    <hr>
 
     <ul style="list-style-type: none;">
         <li>Total Book Requests: <span><?= htmlspecialchars($statistics["total_books_requested"]); ?></span></li>
