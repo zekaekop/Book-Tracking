@@ -118,19 +118,26 @@ And books.php will allow a more advanced way of using the site with searches fil
             
             <h4>Added By: <?= htmlspecialchars($book["username"]);?></h4>
 
-            <?php if ($can_request && $_SESSION["user"]["username"] != $book["username"]): ?>   
-            <button type="submit" 
-                            name="book_request_submit" 
-                            value="<?= $book["book_id"] ?>"
-                            class="ms-auto">Request</button>
-            <?php elseif ($_SESSION["user"]["username"] != $book["username"]): ?>
-            <button type="submit" 
-                            name="book_unrequest_submit" 
-                            value="<?= $book["book_id"] ?>"
-                            class="ms-auto">Remove Request</button>
+            <?php if ($book["status"] == "available"): ?>
+                <?php if ($can_request && $_SESSION["user"]["username"] != $book["username"]): ?>   
+                <button type="submit" 
+                                name="book_request_submit" 
+                                value="<?= $book["book_id"] ?>"
+                                class="ms-auto">Request</button>
+                <?php elseif ($_SESSION["user"]["username"] != $book["username"]): ?>
+                <button type="submit" 
+                                name="book_unrequest_submit" 
+                                value="<?= $book["book_id"] ?>"
+                                class="ms-auto">Remove Request</button>
+                <?php else: ?>
+                <button class="ms-auto" value="<?= $book["book_id"] ?>" name="book_remove_submit">Remove Book</button>
+                <button class="ms-auto" value="<?= $book["book_id"] ?>" name="book_status_update_submit">Apply Status</button>
+                <?php endif ?>
             <?php else: ?>
-            <button class="ms-auto" value="<?= $book["book_id"] ?>" name="book_remove_submit">Remove Book</button>
-            <button class="ms-auto" value="<?= $book["book_id"] ?>" name="book_status_update_submit">Apply Status</button>
+                                <button type="submit" 
+                                name="book_unrequest_submit" 
+                                value="<?= $book["book_id"] ?>"
+                                class="ms-auto">The book is unavailable, remove request?</button>
             <?php endif ?>
         </li>
     </form>
