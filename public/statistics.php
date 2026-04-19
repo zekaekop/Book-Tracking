@@ -24,14 +24,19 @@ function get_statistics() {
 
 ?>
 
-<h1>Site Statistics</h1>
+<div class="container">
+    <h1>Site Statistics</h1>
 
-<ul style="list-style-type: none;">
-    <li>Total Book Requests: <span><?= htmlspecialchars($statistics["total_books_requested"]); ?></span></li>
-    <li>Total Books Added <span><?= htmlspecialchars($statistics["total_books"]); ?></span></li>
-    <li>Total Users <span><?= htmlspecialchars($statistics["total_users"]); ?></span></li>
-</ul>
+    <ul style="list-style-type: none;">
+        <li>Total Book Requests: <span><?= htmlspecialchars($statistics["total_books_requested"]); ?></span></li>
+        <li>Total Books Added <span><?= htmlspecialchars($statistics["total_books"]); ?></span></li>
+        <li>Total Users <span><?= htmlspecialchars($statistics["total_users"]); ?></span></li>
+    </ul>
 
-<form method="POST" action="">
-    <button type="submit" name="refresh_submit">Refresh</button>
-</form>
+    <form method="POST" action="">
+        <button type="submit" name="refresh_submit">Refresh</button>
+    </form>
+
+</div>
+
+<?php require_once __DIR__ . '/../src/template/base_bottom.php' ?>
