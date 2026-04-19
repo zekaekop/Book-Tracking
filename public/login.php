@@ -6,9 +6,6 @@ require_once __DIR__  . "/../src/auth.php";
 
 $login_status = "";
 
-$query = $pdo->query("SELECT * FROM books LIMIT 5");
-$books = $query->fetchAll();
-
 # 5 is the size that fits max container size
 $display_size_book_column_limit = 5;
 
@@ -60,8 +57,12 @@ function flip_compact_book_style($i) {
             </form>
         </div>
         <form method="POST" action="">
+            <!-- Fetches random books from the db, also this means it can show multiple books since its using rand() for every column, in a real production scenario this is very unlikely to show up. -->
             <div class="d-flex">
-            <?php for($i = 0; $i < 5; $i++): ?>
+            <?php for($i = 0; $i < 5; $i++): 
+                $query = $pdo->query("SELECT * FROM books ORDER BY RAND() LIMIT 5");
+                $books = $query->fetchAll();
+                ?>
                 <div class="row ">
                     <ul style="list-style-type: none;">
                         <?php foreach($books as $book): ?>
