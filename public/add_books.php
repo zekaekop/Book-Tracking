@@ -9,6 +9,12 @@ require_once __DIR__ . "/../src/add_books.php";
 ?>
 
 <div class="container">
+
+    <h1>Add Books</h1>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda distinctio cupiditate quibusdam iste magnam officia in maiores laboriosam obcaecati, quas repellat itaque, optio quidem. Incidunt dolorem cum reiciendis placeat fuga?</p>
+
+    <hr>
+
     <form method="POST" action="">
 
         <input type="text" name="title" placeholder="Title" required>
