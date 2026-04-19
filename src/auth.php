@@ -1,14 +1,8 @@
 <?php
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    switch (isset($_POST)) {
-        case "login_submit":
-            login($pdo);
-            break;
-        case "register_submit":
-            register($pdo);
-            break;
-    }
+    if (isset($_POST["login_submit"])) login($pdo);
+    if (isset($_POST["register_submit"])) register($pdo);
 }
 
 function login($pdo) {
