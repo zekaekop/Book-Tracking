@@ -2,6 +2,7 @@
 
 require_once __DIR__  . "/../src/template/base_top.php";
 
+redirect_auth_users();
 $login_status = "";
 
 require_once __DIR__  . "/../src/auth.php";

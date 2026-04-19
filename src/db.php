@@ -21,9 +21,18 @@ function logout_account() {
     }
 }
 
+// Prevents from seing the site unless they have agreed to create a Anon account
 function redirect_unauth_users() {
     if (empty($_SESSION["user"])) {
         header("Location: no_account_warning.php");
+        exit();
+    }
+}
+
+// Prevents the logged in user from seing login pages etc.
+function redirect_auth_users() {
+    if (!empty($_SESSION["user"])) {
+        header("Location: home.php");
         exit();
     }
 }
