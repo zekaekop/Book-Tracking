@@ -42,6 +42,32 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         header("Location: detail.php?book=$book_id");
         exit();
     }
+
+
+    if (isset($_POST["book_status_update_submit"])) {
+
+        if ($_POST["status_checkbox"]) {
+            $_POST["status_checkbox"] = "available";
+        } else {
+            $_POST["status_checkbox"] = "unavailable";
+        }
+
+        $query = $pdo->prepare("UPDATE books SET status = ? WHERE id = ?");
+        $query->execute([$_POST["status_checkbox"], $_POST["book_status_update_submit"]]);
+
+        // Refresh site
+        $book_id = $book["book_id"];
+        header("Location: detail.php?book=$book_id");
+        exit();
+    }
+
+    if (isset($_POST["book_remove_submit"])) {
+        $query = $pdo->prepare("DELETE FROM books WHERE id = ?");
+        $query->execute([$_POST["book_remove_submit"]]);
+
+        header("Location: books.php");
+        exit();
+    }
 }
 ?>
 
@@ -65,7 +91,18 @@ And books.php will allow a more advanced way of using the site with searches fil
             <h3>Title: <?= htmlspecialchars($book["title"]);?></h3>
             <h4>Description: <?= htmlspecialchars($book["desc"]);?></h4>
             <h4>Book ID: <?= htmlspecialchars($book["book_id"]);?></h4>
-            <h4>Status: <?= htmlspecialchars($book["status"]);?></h4>
+
+            <?php if ($_SESSION["user"]["username"] == $book["username"]): ?>
+
+                <h4>Status: <input type="checkbox" value="status_check" name="status_checkbox"
+                <?php if ($book["status"] == "available"): ?>
+                    checked
+                <?php endif ?>
+                ><?= htmlspecialchars($book["status"]);?></h4>
+
+            <?php else: ?>
+                <h4>Status: <?= htmlspecialchars($book["status"]);?></h4>
+            <?php endif ?>
 
             <h4>Requested By: 
             <?php     
@@ -92,7 +129,8 @@ And books.php will allow a more advanced way of using the site with searches fil
                             value="<?= $book["book_id"] ?>"
                             class="ms-auto">Remove Request</button>
             <?php else: ?>
-            <button class="ms-auto">You cannot request your own book</button>
+            <button class="ms-auto" value="<?= $book["book_id"] ?>" name="book_remove_submit">Remove Book</button>
+            <button class="ms-auto" value="<?= $book["book_id"] ?>" name="book_status_update_submit">Apply Status</button>
             <?php endif ?>
         </li>
     </form>
