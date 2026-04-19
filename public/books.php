@@ -5,6 +5,10 @@ require_once __DIR__ . "/../src/template/base_top.php";
 
 redirect_unauth_users();
 
+function flip_compact_book_style($i) {
+    return $i % 2 ? "compact_book_gray" : "compact_book_dark_gray";
+}
+
 $query = $pdo->query("SELECT * FROM books");
 $books = $query->fetchAll();
 
@@ -22,21 +26,22 @@ And books.php will allow a more advanced way of using the site with searches fil
 -->
 
 <div class="container">
-    <h1>Book listing page</h1>
+    <h1>Browse Books</h1>
     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda distinctio cupiditate quibusdam iste magnam officia in maiores laboriosam obcaecati, quas repellat itaque, optio quidem. Incidunt dolorem cum reiciendis placeat fuga?</p>
 
     <hr>
 
     <h2>Available books</h2>
 
+    <hr>
+
         <form method="POST" action="">
-        <ul style="list-style-type: none;">
-            <?php foreach($books as $book): ?>
-                <li>
-                    <?= htmlspecialchars($book["title"]);?> 
-                    <button type="submit" name="book_request_submit" value="<?= $book["id"] ?>">Detail</button>
-                </li>
-            <?php endforeach ?>
+        <ul style="list-style-type: none;" class="p-0">
+            <?php 
+            foreach($books as $book) {
+                include("book_individual.php");
+            }
+            ?>
         </ul>
     </form>
 
