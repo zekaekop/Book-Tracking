@@ -14,11 +14,14 @@ $query = $pdo->prepare("SELECT
                                             b.status,
                                             b.requested_user_id,
                                             ureq.username AS requested_username,
-                                            u.username
+                                            u.username,
+                                            ct.name AS category_name
                                             FROM books b
                                             JOIN users u ON b.added_by_user_id = u.id 
-                                            LEFT JOIN users ureq ON b.requested_user_id = ureq.id 
+                                            LEFT JOIN users ureq ON b.requested_user_id = ureq.id
+                                            LEFT JOIN categories ct ON b.id_category = ct.id
                                             WHERE b.id = ?");
+
 $query->execute([$_GET["book"]]);
 $book = $query->fetch(PDO::FETCH_ASSOC);
 
@@ -43,7 +46,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         exit();
     }
 
-
+    // Updates category and the status of the book
     if (isset($_POST["book_status_update_submit"])) {
 
         if ($_POST["status_checkbox"]) {
@@ -51,6 +54,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         } else {
             $_POST["status_checkbox"] = "unavailable";
         }
+
+        $query_category = $pdo->prepare("UPDATE books SET id_category = ? WHERE id = ?");
+        $query_category->execute([$_POST["category_select"], $_POST["book_status_update_submit"]]);
 
         $query = $pdo->prepare("UPDATE books SET status = ? WHERE id = ?");
         $query->execute([$_POST["status_checkbox"], $_POST["book_status_update_submit"]]);
@@ -92,13 +98,35 @@ And books.php will allow a more advanced way of using the site with searches fil
             <h4>Description: <?= htmlspecialchars($book["desc"]);?></h4>
             <h4>Book ID: <?= htmlspecialchars($book["book_id"]);?></h4>
 
+            <!-- If the book owner is the user -->
             <?php if ($_SESSION["user"]["username"] == $book["username"]): ?>
 
+                <!-- He has access to changing availablity and category -->
                 <h4>Status: <input type="checkbox" value="status_check" name="status_checkbox"
                 <?php if ($book["status"] == "available"): ?>
                     checked
                 <?php endif ?>
                 ><?= htmlspecialchars($book["status"]);?></h4>
+
+
+                <label for="categories_select">Choose a Category:</label>
+                <select name="category_select">
+                    <?php 
+                    $query = $pdo->query("SELECT * FROM categories");
+                    $categories = $query->fetchAll();
+
+                    foreach ($categories as $category): ?>
+
+                        <!-- Selected becomes default for the value it has in books -->
+                        <option 
+                        <?php if ($category["name"] == $book["category_name"]): ?>
+                            selected
+                        <?php endif ?>
+                        
+                        value="<?= $category["id"]; ?>"
+                        ><?= htmlspecialchars($category["name"]); ?></option>
+                    <?php endforeach ?>
+                </select> 
 
             <?php else: ?>
                 <h4>Status: <?= htmlspecialchars($book["status"]);?></h4>
@@ -117,6 +145,8 @@ And books.php will allow a more advanced way of using the site with searches fil
             </h4>
             
             <h4>Added By: <?= htmlspecialchars($book["username"]);?></h4>
+
+            <h4>Category: <?= htmlspecialchars($book["category_name"]);?></h4>
 
             <?php if ($book["status"] == "available"): ?>
                 <?php if ($can_request && $_SESSION["user"]["username"] != $book["username"]): ?>   
