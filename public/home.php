@@ -33,6 +33,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         header("Location: detail.php?book=$book_id");
         exit();
      }
+    if (isset($_POST["im_lucky"])) {
+        $query_rand = $pdo->query("SELECT id FROM books ORDER BY RAND() LIMIT 1")->fetchColumn();
+        header("Location: detail.php?book=$query_rand");
+        exit();
+     }
 }
 ?>
 
@@ -46,7 +51,7 @@ And books.php will allow a more advanced way of using the site with searches fil
     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda distinctio cupiditate quibusdam iste magnam officia in maiores laboriosam obcaecati, quas repellat itaque, optio quidem. Incidunt dolorem cum reiciendis placeat fuga?</p>
 
     <form action="" method="POST">
-        <button type="submit">Im feeling lucky</button>
+        <button type="submit" name="im_lucky">Im feeling lucky</button>
     </form>
 
     <!-- use fact api to fetch facts
