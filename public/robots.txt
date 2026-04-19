@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /*.php
+disallow: /*
+disallow: /exceptions.php

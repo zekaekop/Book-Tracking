@@ -1,6 +1,6 @@
 <?php 
 
-include("base.php");
+require_once __DIR__ . "/../src/template/base_top.php";
 
 redirect_unauth_users();
 
@@ -16,3 +16,5 @@ $books = $query->fetchAll();
 
 <h3>Books</h3>
 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus rerum vero blanditiis earum. Quos adipisci nihil dignissimos iste ipsum aliquam aperiam corrupti possimus, quo quam necessitatibus? Minima aspernatur doloremque eveniet!</p>
+
+<?php require_once __DIR__ . '/../src/template/base_bottom.php'; ?>
