@@ -26,3 +26,5 @@ $register_status = "";
 
     </form>
 </div>
+
+<?php require_once __DIR__ . '/../src/template/base_bottom.php' ?>
