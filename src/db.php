@@ -23,7 +23,7 @@ function logout_account() {
 
 function redirect_unauth_users() {
     if (empty($_SESSION["user"])) {
-        header("Location: login.php");
+        header("Location: no_account_warning.php");
         exit();
     }
 }
