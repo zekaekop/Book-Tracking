@@ -2,6 +2,8 @@
 
 require_once __DIR__  . "/../src/template/base_top.php";
 
+redirect_auth_users();
+
 ?>
 
 <div class="container">
