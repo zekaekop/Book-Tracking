@@ -4,16 +4,8 @@ require_once __DIR__ . "/../src/template/base_top.php";
 
 redirect_unauth_users();
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    if (isset($_POST["add_book_submit"])) {
+require_once __DIR__ . "/../src/add_books.php";
 
-        $title = $_POST["title"];
-        $desc = $_POST["desc"];
-
-        $query = $pdo->prepare("INSERT INTO books (`title`, `desc`, `added_by_user_id`) VALUES (?,?,?)");
-        $query->execute([$title, $desc, $_SESSION["user"]["id"]]);
-    }
-}
 ?>
 
 <form method="POST" action="">
