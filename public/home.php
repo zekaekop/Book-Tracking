@@ -21,29 +21,30 @@ Difference between home and books is, home will be simplistic only showing a cer
 And books.php will allow a more advanced way of using the site with searches filters statistics etc.
 -->
 
-<h1>Home page</h1>
-<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda distinctio cupiditate quibusdam iste magnam officia in maiores laboriosam obcaecati, quas repellat itaque, optio quidem. Incidunt dolorem cum reiciendis placeat fuga?</p>
+<div class="container">
+    <h1>Home page</h1>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda distinctio cupiditate quibusdam iste magnam officia in maiores laboriosam obcaecati, quas repellat itaque, optio quidem. Incidunt dolorem cum reiciendis placeat fuga?</p>
 
-<form action="" method="POST">
-    <button type="submit">Im feeling lucky</button>
-</form>
+    <form action="" method="POST">
+        <button type="submit">Im feeling lucky</button>
+    </form>
 
-<!-- use fact api to fetch facts -->
-<small>Fun Fact: <?php htmlspecialchars("fact");?> </small>
+    <!-- use fact api to fetch facts -->
+    <small>Fun Fact: <?php htmlspecialchars("fact");?> </small>
 
-<hr>
+    <hr>
 
-<h2>Available books</h2>
+    <h2>Available books</h2>
 
-<form method="POST" action="">
-    <ul style="list-style-type: none;">
-        <?php foreach($books as $book): ?>
-            <li>
-                <?= htmlspecialchars($book["title"]);?> 
-                <button type="submit" name="book_request_submit" value="<?= $book["id"] ?>">Detail</button>
-            </li>
-        <?php endforeach ?>
-    </ul>
-</form>
-
+    <form method="POST" action="">
+        <ul style="list-style-type: none;">
+            <?php foreach($books as $book): ?>
+                <li>
+                    <?= htmlspecialchars($book["title"]);?> 
+                    <button type="submit" name="book_request_submit" value="<?= $book["id"] ?>">Detail</button>
+                </li>
+            <?php endforeach ?>
+        </ul>
+    </form>
+</div>
 <?php require_once __DIR__ . '/../src/template/base_bottom.php' ?>
