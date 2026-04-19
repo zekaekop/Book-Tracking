@@ -33,39 +33,41 @@ Difference between home and books is, home will be simplistic only showing a cer
 And books.php will allow a more advanced way of using the site with searches filters statistics etc.
 -->
 
-<h1>Book listing page</h1>
-<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda distinctio cupiditate quibusdam iste magnam officia in maiores laboriosam obcaecati, quas repellat itaque, optio quidem. Incidunt dolorem cum reiciendis placeat fuga?</p>
+<div class="container">
+    <h1>Book listing page</h1>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda distinctio cupiditate quibusdam iste magnam officia in maiores laboriosam obcaecati, quas repellat itaque, optio quidem. Incidunt dolorem cum reiciendis placeat fuga?</p>
 
-<hr>
+    <hr>
 
-<h2>Available books</h2>
+    <h2>Available books</h2>
 
-<form method="POST" action="">
+    <form method="POST" action="">
 
-    <!-- most popular -->
-    <ul style="list-style-type: none;">
-        <?php 
-        foreach($books["most popular"] as $book) {
-            include("book_individual.php");
-        }
-        ?>
-    </ul>
+        <!-- most popular -->
+        <ul style="list-style-type: none;">
+            <?php 
+            foreach($books["most popular"] as $book) {
+                include("book_individual.php");
+            }
+            ?>
+        </ul>
 
-    <!-- most recent -->
-    <ul style="list-style-type: none;">
-        <?php foreach($books["most recent"] as $book) {
-            include("book_individual.php");
-        }
-        ?>
-    </ul>
+        <!-- most recent -->
+        <ul style="list-style-type: none;">
+            <?php foreach($books["most recent"] as $book) {
+                include("book_individual.php");
+            }
+            ?>
+        </ul>
 
-    <!-- most requests -->
-    <ul style="list-style-type: none;">
-        <?php foreach($books["most requests"] as $book)  {
-            include("book_individual.php");
-        }
-        ?>
-    </ul>
-</form>
+        <!-- most requests -->
+        <ul style="list-style-type: none;">
+            <?php foreach($books["most requests"] as $book)  {
+                include("book_individual.php");
+            }
+            ?>
+        </ul>
+    </form>
+</div>
 
 <?php require_once __DIR__ . '/../src/template/base_bottom.php'; ?>
