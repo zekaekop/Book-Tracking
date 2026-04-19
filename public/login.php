@@ -2,9 +2,9 @@
 
 require_once __DIR__  . "/../src/template/base_top.php";
 
-require_once __DIR__  . "/../src/auth.php";
-
 $login_status = "";
+
+require_once __DIR__  . "/../src/auth.php";
 
 # 5 is the size that fits max container size
 $display_size_book_column_limit = 5;

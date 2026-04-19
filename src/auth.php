@@ -12,6 +12,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 }
 
 function login($pdo) {
+    global $login_status;
+
     $username = $_POST["username"];
     $email = $_POST["email"];
     $password = $_POST["password"];
@@ -20,7 +22,7 @@ function login($pdo) {
     $query->execute([$username, $email]);
     $user = $query->fetch();
 
-    if (isset($user)){
+    if (!empty($user)){
         if (password_verify($password, $user['password'])) {
             $login_status = "User successfully";
             $_SESSION["user"] = $user;
@@ -30,7 +32,7 @@ function login($pdo) {
             $login_status = "Username or password does not match";
         }
     } else {
-        $login_status = "User does not exist";
+        $login_status = "User or Email does not exist";
     }
 }
 
