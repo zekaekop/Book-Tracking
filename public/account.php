@@ -24,32 +24,34 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 }
 ?>
 
-<h1>Welcome <?= htmlspecialchars($_SESSION["user"]["username"]); ?></h1>
+<div class="container">
+    <h1>Welcome <?= htmlspecialchars($_SESSION["user"]["username"]); ?></h1>
 
-<hr>
+    <hr>
 
-<h3>User Info</h3>
+    <h3>User Info</h3>
 
-<table>
-    <thead>
+    <table>
+        <thead>
+            <tr>
+                <th>Username</th>
+                <th>Email</th>
+                <th>Password</th>
+            </tr>
+        </thead>
         <tr>
-            <th>Username</th>
-            <th>Email</th>
-            <th>Password</th>
+            <td><?= htmlspecialchars($_SESSION["user"]["username"]); ?></td>
+            <td><?= htmlspecialchars($_SESSION["user"]["email"]); ?></td>
+
+            <!-- its best not to display passwords, but its usefull if in the feature email account creation is added -->
+            <!-- users could see if they made their account with a password or email sign in -->
+            <td>******</td>
         </tr>
-    </thead>
-    <tr>
-        <td><?= htmlspecialchars($_SESSION["user"]["username"]); ?></td>
-        <td><?= htmlspecialchars($_SESSION["user"]["email"]); ?></td>
+    </table>
 
-        <!-- its best not to display passwords, but its usefull if in the feature email account creation is added -->
-        <!-- users could see if they made their account with a password or email sign in -->
-        <td>******</td>
-    </tr>
-</table>
-
-<form method="POST" action="">
-<button type="submit" name="logout_submit">Logout</button>
-</form>
+    <form method="POST" action="">
+    <button type="submit" name="logout_submit">Logout</button>
+    </form>
+</div>
 
 <?php require_once __DIR__ . '/../src/template/base_bottom.php'; ?>
