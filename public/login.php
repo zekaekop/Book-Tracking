@@ -24,6 +24,11 @@ function flip_compact_book_style($i) {
 ?>
 
 <div class="container">
+    <h1>Login page</h1>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda distinctio cupiditate quibusdam iste magnam officia in maiores laboriosam obcaecati, quas repellat itaque, optio quidem. Incidunt dolorem cum reiciendis placeat fuga?</p>
+
+    <hr>
+
     <div class="d-flex justify-content-between">
         <div class="row">
             <form method="POST">

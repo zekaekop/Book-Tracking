@@ -8,6 +8,12 @@ $register_status = "";
 ?>
 
 <div class="container">
+
+    <h1>Register page</h1>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda distinctio cupiditate quibusdam iste magnam officia in maiores laboriosam obcaecati, quas repellat itaque, optio quidem. Incidunt dolorem cum reiciendis placeat fuga?</p>
+
+    <hr>
+
     <form method="POST">
 
         <p><?= htmlspecialchars($register_status) ?></p>
