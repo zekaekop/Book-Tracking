@@ -1,7 +1,7 @@
 
 <?php 
 
-include("base.php");
+require_once __DIR__ . "/../src/template/base_top.php";
 
 redirect_unauth_users();
 
@@ -67,3 +67,5 @@ And books.php will allow a more advanced way of using the site with searches fil
         ?>
     </ul>
 </form>
+
+<?php require_once __DIR__ . '/../src/template/base_bottom.php'; ?>

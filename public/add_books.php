@@ -1,6 +1,6 @@
 <?php
 
-include("base.php");
+require_once __DIR__ . "/../src/template/base_top.php";
 
 redirect_unauth_users();
 
@@ -25,3 +25,5 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <button type="submit" name="add_book_submit">Add Book</button>
 
 </form>
+
+<?php require_once __DIR__ . '/../src/template/base_bottom.php'; ?>

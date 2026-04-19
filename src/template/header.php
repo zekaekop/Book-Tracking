@@ -6,7 +6,7 @@
                 <li class="nav-item"><a href="home.php">Home</a></li>
                 <li class="nav-item"><a href="add_books.php">Add Books</a></li>
                 <li class="nav-item"><a href="statistics.php">Statistics</a></li>
-                <li class="nav-item"><a href="Account.php">Account</a></li>
+                <li class="nav-item"><a href="account.php">Account</a></li>
             </ul>
         </nav>
     </div>

@@ -3,7 +3,7 @@ ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
-include("db.php");
+require_once __DIR__ . "/../../src/db.php";
 
 ?>
 <!DOCTYPE html>
@@ -19,6 +19,6 @@ include("db.php");
 
 <?php
 
-include("header.php");
+require_once __DIR__ . "/../../src/template/header.php";
 
 ?>

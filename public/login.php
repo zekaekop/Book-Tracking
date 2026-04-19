@@ -1,36 +1,13 @@
 <?php
 
-include("base_top.php");
+require_once __DIR__  . "/../src/template/base_top.php";
+
+require_once __DIR__  . "/../src/auth.php";
 
 $login_status = "";
 
 $query = $pdo->query("SELECT * FROM books LIMIT 5");
 $books = $query->fetchAll();
-
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    if (isset($_POST["login_submit"])) {
-        $username = $_POST["username"];
-        $email = $_POST["email"];
-        $password = $_POST["password"];
-
-        $query = $pdo->prepare("SELECT * FROM users WHERE username = ? AND email =?");
-        $query->execute([$username, $email]);
-        $user = $query->fetch();
-
-        if (isset($user)){
-            if (password_verify($password, $user['password'])) {
-                $login_status = "User successfully";
-                $_SESSION["user"] = $user;
-                header("Location: home.php");
-                exit();
-            } else {
-                $login_status = "Username or password does not match";
-            }
-        } else {
-            $login_status = "User does not exist";
-        }
-    }
-}
 
 # 5 is the size that fits max container size
 $display_size_book_column_limit = 5;
@@ -98,4 +75,4 @@ function flip_compact_book_style($i) {
 
 </div>
 
-<?php include("base_bottom.php"); ?>
+<?php require_once __DIR__ . '/../src/template/base_bottom.php' ?>

@@ -1,6 +1,6 @@
 <?php
 
-include("base.php");
+require_once __DIR__ . "/../src/template/base_top.php";
 
 $statistics = get_statistics();
 

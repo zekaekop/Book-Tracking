@@ -1,7 +1,7 @@
 
 <?php
 
-include("base.php");
+require_once __DIR__ . "/../src/template/base_top.php";
 
 redirect_unauth_users();
 
@@ -51,3 +51,5 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <form method="POST" action="">
 <button type="submit" name="logout_submit">Logout</button>
 </form>
+
+<?php require_once __DIR__ . '/../src/template/base_bottom.php'; ?>

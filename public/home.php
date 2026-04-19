@@ -1,18 +1,19 @@
 <?php 
 
-include("base_top.php");
+require_once __DIR__ . "/../src/template/base_top.php";
 
 redirect_unauth_users();
 
 $query = $pdo->query("SELECT * FROM books");
 $books = $query->fetchAll();
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    if (isset($_POST["book_request_submit"])) {
-        $query = $pdo->prepare("UPDATE books SET requested_user_id = ? WHERE id = ?");
-        $query->execute([$_SESSION["user"]["id"], $_POST["book_request_submit"]]);
-    }
-}
+// if ($_SERVER["REQUEST_METHOD"] == "POST") {
+//     if (isset($_POST["book_request_submit"])) {
+//         $query = $pdo->prepare("UPDATE books SET requested_user_id = ? WHERE id = ?");
+//         $query->execute([$_SESSION["user"]["id"], $_POST["book_request_submit"]]);
+//     }
+// }
+
 ?>
 
 <!-- 
@@ -39,10 +40,10 @@ And books.php will allow a more advanced way of using the site with searches fil
         <?php foreach($books as $book): ?>
             <li>
                 <?= htmlspecialchars($book["title"]);?> 
-                <button type="submit" name="book_request_submit" value="<?= $book["id"] ?>">Request</button>
+                <button type="submit" name="book_request_submit" value="<?= $book["id"] ?>">Detail</button>
             </li>
         <?php endforeach ?>
     </ul>
 </form>
 
-<?php include("base_bottom.php"); ?>
+<?php require_once __DIR__ . '/../src/template/base_bottom.php' ?>
