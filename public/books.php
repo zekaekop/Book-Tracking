@@ -31,25 +31,30 @@ And books.php will allow a more advanced way of using the site with searches fil
 -->
 
 <div class="container">
-    <h1>Browse Books</h1>
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda distinctio cupiditate quibusdam iste magnam officia in maiores laboriosam obcaecati, quas repellat itaque, optio quidem. Incidunt dolorem cum reiciendis placeat fuga?</p>
+    <div class="book-card mb-4">
 
-    <hr>
+        <div class="background-shadow-shade">
+            <h1>Browse Books</h1>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda distinctio cupiditate quibusdam iste magnam officia in maiores laboriosam obcaecati, quas repellat itaque, optio quidem. Incidunt dolorem cum reiciendis placeat fuga?</p>
+        </div>
 
-    <h2>Available books</h2>
+        <hr>
 
-    <hr>
+        <h2>Available books</h2>
 
-        <form method="POST" action="">
-        <ul style="list-style-type: none;" class="p-0">
-            <?php 
-            foreach($books as $book) {
-                include("book_individual.php");
-            }
-            ?>
-        </ul>
-    </form>
+        <hr>
 
+            <form method="POST" action="">
+            <ul style="list-style-type: none;" class="p-0">
+                <?php 
+                foreach($books as $book) {
+                    include("book_individual.php");
+                }
+                ?>
+            </ul>
+        </form>
+        
+    </div>
 </div>
 
 <?php require_once __DIR__ . '/../src/template/base_bottom.php'; ?>
