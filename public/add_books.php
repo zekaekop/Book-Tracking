@@ -10,8 +10,12 @@ require_once __DIR__ . "/../src/add_books.php";
 
 <div class="container">
 
-    <h1>Add Books</h1>
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda distinctio cupiditate quibusdam iste magnam officia in maiores laboriosam obcaecati, quas repellat itaque, optio quidem. Incidunt dolorem cum reiciendis placeat fuga?</p>
+    <div class="book-card mb-4">
+
+    <div class="background-shadow-shade">
+        <h1>Add Books</h1>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda distinctio cupiditate quibusdam iste magnam officia in maiores laboriosam obcaecati, quas repellat itaque, optio quidem. Incidunt dolorem cum reiciendis placeat fuga?</p>
+    </div>
 
     <hr>
 
@@ -21,9 +25,11 @@ require_once __DIR__ . "/../src/add_books.php";
         <br>
         <textarea name="desc" placeholder="Description" required></textarea>
         <br>
-        <button type="submit" name="add_book_submit">Add Book</button>
+        <button class="btn btn-primary-custom" type="submit" name="add_book_submit">Add Book</button>
 
     </form>
+
+    </div>
 </div>
 
 <?php require_once __DIR__ . '/../src/template/base_bottom.php'; ?>
