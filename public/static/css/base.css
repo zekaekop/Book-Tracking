@@ -1,14 +1,57 @@
 :root{
     --random: blue;
+    --bg-image: url("/static/img/books_space.jpg");
+    --book-color: rgba(63, 70, 172, 0.5);
+
+    --compact-book: rgba(51, 40, 155, 0.164);
+
+    --compact-book-2: rgba(36, 43, 129, 0.5);
+
+    --border-color: 2px solid rgba(255, 255, 255, 0.5);
+    --border-color-less: 2px solid rgba(146, 255, 250, 0.3);
+    --border-color-less-less: 2px solid rgba(218, 36, 255, 0.2);
+}
+
+/* :root{
+    --random: blue;
+    --bg-image: url("/static/img/books_space.jpg");
     --header-color: rgb(226, 226, 226);
 
     --compact-book: rgb(200, 200, 200);
 
     --compact-book-2: rgb(175, 175, 175);
+} */
+
+body{
+    background-image: var(--bg-image);
+    color: white;
 }
 
-.header_card{
-    background-color: var(--header-color);
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+div,
+form,
+li,
+ul,
+nav,
+a,
+p{
+    color: white !important;
+}
+
+.book-card{
+    
+    border: var(--border-color);
+    background-color: var(--book-color);
+    border-radius: 10px;
+
+    backdrop-filter: blur(30px);
+
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.3);
 }
 
 .footer_card{
@@ -16,9 +59,23 @@
 }
 
 .compact_book_gray{
+    border: var(--border-color-less);
     background-color: var(--compact-book);
+    border-radius: 5px;
+
+    backdrop-filter: blur(30px);
+
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.3);
+
 }
 
 .compact_book_dark_gray{
+    border: var(--border-color-less-less);
     background-color: var(--compact-book-2);
+    border-radius: 5px;
+
+    backdrop-filter: blur(30px);
+
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.3);
+
 }

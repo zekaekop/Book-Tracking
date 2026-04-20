@@ -167,7 +167,7 @@ And books.php will allow a more advanced way of using the site with searches fil
                                 <button type="submit" 
                                 name="book_unrequest_submit" 
                                 value="<?= $book["book_id"] ?>"
-                                class="ms-auto">The book is unavailable, remove request?</button>
+                                class="ms-auto">The book is unavailable</button>
             <?php endif ?>
         </li>
     </form>

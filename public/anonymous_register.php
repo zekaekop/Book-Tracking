@@ -33,7 +33,7 @@ $register_status = "";
         <p><?= htmlspecialchars($register_status) ?></p>
 
         <input type="text" name="display_username" placeholder="Display Username" required>
-        <button type="submit" name="register_submit">Register</button>
+        <button type="submit" name="anon_register_submit">Register</button>
 
         <br>
 
