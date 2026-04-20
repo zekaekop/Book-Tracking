@@ -47,59 +47,66 @@ And books.php will allow a more advanced way of using the site with searches fil
 -->
 
 <div class="container">
-    <h1>Home page</h1>
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda distinctio cupiditate quibusdam iste magnam officia in maiores laboriosam obcaecati, quas repellat itaque, optio quidem. Incidunt dolorem cum reiciendis placeat fuga?</p>
+    <div class="book-card mb-4">
 
-    <form action="" method="POST">
-        <button type="submit" name="im_lucky">Im feeling lucky</button>
-    </form>
-
-    <!-- use fact api to fetch facts
-    <small>Fun Fact:  </small> -->
-
-    <hr>
-
-    <h2>Available books</h2>
-
-    <hr>
-
-    <form method="POST" action="">
-        <div class="d-flex">
-            <!-- most popular -->
-             <div class="row m-3">
-                <h3>Most Popular</h3>
-                <ul style="list-style-type: none;">
-                    <?php 
-                    foreach($books["most popular"] as $book) {
-                        include("book_individual.php");
-                    }
-                    ?>
-                </ul>
-            </div>
-
-            <div class="row m-3">
-                <!-- most recent -->
-                <h3>Most Recent</h3>
-                <ul style="list-style-type: none;">
-                    <?php foreach($books["most recent"] as $book) {
-                        include("book_individual.php");
-                    }
-                    ?>
-                </ul>
-            </div>
-
-            <div class="row m-3">
-                <!-- most requests -->
-                <h3>Most Requests</h3>
-                <ul style="list-style-type: none;">
-                    <?php foreach($books["most requests"] as $book)  {
-                        include("book_individual.php");
-                    }
-                    ?>
-                </ul>
-            </div>
+        <div class="background-shadow-shade">
+            <h1>Home page</h1>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda distinctio cupiditate quibusdam iste magnam officia in maiores laboriosam obcaecati, quas repellat itaque, optio quidem. Incidunt dolorem cum reiciendis placeat fuga?</p>
+        
+            <form action="" method="POST">
+                <button class="btn btn-primary-custom" type="submit" name="im_lucky">Im feeling lucky</button>
+            </form>
 
         </div>
-    </form>
+
+        <!-- use fact api to fetch facts
+        <small>Fun Fact:  </small> -->
+
+        <hr>
+
+        <h2>Available books</h2>
+
+        <hr>
+
+        <form method="POST" action="">
+            <div class="d-flex">
+                <!-- most popular -->
+                <div class="row m-3">
+                    <h3>Most Popular</h3>
+                    <ul style="list-style-type: none;">
+                        <?php 
+                        foreach($books["most popular"] as $book) {
+                            include("book_individual.php");
+                        }
+                        ?>
+                    </ul>
+                </div>
+
+                <div class="row m-3">
+                    <!-- most recent -->
+                    <h3>Most Recent</h3>
+                    <ul style="list-style-type: none;">
+                        <?php foreach($books["most recent"] as $book) {
+                            include("book_individual.php");
+                        }
+                        ?>
+                    </ul>
+                </div>
+
+                <div class="row m-3">
+                    <!-- most requests -->
+                    <h3>Most Requests</h3>
+                    <ul style="list-style-type: none;">
+                        <?php foreach($books["most requests"] as $book)  {
+                            include("book_individual.php");
+                        }
+                        ?>
+                    </ul>
+                </div>
+
+            </div>
+        </form>
+
+    </div>
 </div>
 <?php require_once __DIR__ . '/../src/template/base_bottom.php' ?>

@@ -24,9 +24,11 @@ function flip_compact_book_style($i) {
 <div class="container">
     <div class="book-card mb-4">
 
+        <div class="background-shadow-shade">
         <h1>Login page</h1>
         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda distinctio cupiditate quibusdam iste magnam officia in maiores laboriosam obcaecati, quas repellat itaque, optio quidem. Incidunt dolorem cum reiciendis placeat fuga?</p>
-
+        </div>
+        
         <hr>
 
         <div class="d-flex justify-content-between">
