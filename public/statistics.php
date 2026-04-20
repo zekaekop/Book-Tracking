@@ -25,8 +25,12 @@ function get_statistics() {
 ?>
 
 <div class="container">
-    <h1>Site Statistics</h1>
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda distinctio cupiditate quibusdam iste magnam officia in maiores laboriosam obcaecati, quas repellat itaque, optio quidem. Incidunt dolorem cum reiciendis placeat fuga?</p>
+    <div class="book-card mb-4">
+
+    <div class="background-shadow-shade">
+        <h1>Site Statistics</h1>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda distinctio cupiditate quibusdam iste magnam officia in maiores laboriosam obcaecati, quas repellat itaque, optio quidem. Incidunt dolorem cum reiciendis placeat fuga?</p>
+    </div>
 
     <hr>
 
@@ -37,9 +41,10 @@ function get_statistics() {
     </ul>
 
     <form method="POST" action="">
-        <button type="submit" name="refresh_submit">Refresh</button>
+        <button class="btn btn-primary-custom ms-4" type="submit" name="refresh_submit">Refresh</button>
     </form>
 
+    </div>
 </div>
 
 <?php require_once __DIR__ . '/../src/template/base_bottom.php' ?>
