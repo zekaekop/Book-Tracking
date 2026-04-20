@@ -22,61 +22,65 @@ function flip_compact_book_style($i) {
 ?>
 
 <div class="container">
-    <h1>Login page</h1>
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda distinctio cupiditate quibusdam iste magnam officia in maiores laboriosam obcaecati, quas repellat itaque, optio quidem. Incidunt dolorem cum reiciendis placeat fuga?</p>
+    <div class="book-card mb-4">
 
-    <hr>
+        <h1>Login page</h1>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda distinctio cupiditate quibusdam iste magnam officia in maiores laboriosam obcaecati, quas repellat itaque, optio quidem. Incidunt dolorem cum reiciendis placeat fuga?</p>
 
-    <div class="d-flex justify-content-between">
-        <div class="row">
-            <form method="POST">
+        <hr>
 
-                <!-- Status -->
-                <p><?= htmlspecialchars($login_status) ?></p>
+        <div class="d-flex justify-content-between">
+            <div class="row">
+                <form method="POST">
 
-                <!-- Login -->
-                <input type="text" name="username" placeholder="Username" required>
-                <br>
-                <input type="text" name="email" placeholder="Email" required>
-                <br>
-                <input type="password" name="password" placeholder="Password" required>
-                <br>
-                <button type="submit" name="login_submit">Login</button>
+                    <!-- Status -->
+                    <p><?= htmlspecialchars($login_status) ?></p>
 
-                <a href="register.php"><small>Don't have an account?</small></a>
+                    <!-- Login -->
+                    <input type="text" name="username" placeholder="Username" required>
+                    <br>
+                    <input type="text" name="email" placeholder="Email" required>
+                    <br>
+                    <input type="password" name="password" placeholder="Password" required>
+                    <br>
+                    <button type="submit" name="login_submit">Login</button>
 
-                <a href="info.php"><small>info</small></a>
+                    <a href="register.php"><small>Don't have an account?</small></a>
 
-                <!-- Anon -->
-                <div class="container">
-                    <div class="">
-                        <p>Request a book without an account</p>
-                        <button>Request a book</button>
+                    <a href="info.php"><small>info</small></a>
+
+                    <!-- Anon -->
+                    <div class="container">
+                        <div class="">
+                            <p>Request a book without an account</p>
+                            <button>Request a book</button>
+                        </div>
                     </div>
-                </div>
 
+                </form>
+            </div>
+            <form method="POST" action="">
+                <!-- Fetches random books from the db, also this means it can show multiple books since its using rand() for every column, in a real production scenario this is very unlikely to show up. -->
+                <div class="d-flex">
+                <?php for($i = 0; $i < 4; $i++): 
+                    $query = $pdo->query("SELECT * FROM books ORDER BY RAND() LIMIT 5");
+                    $books = $query->fetchAll();
+                    ?>
+                    <div class="row me-1">
+                        <ul style="list-style-type: none;">
+                            <?php foreach($books as $book): ?>
+                                <li class="d-flex mt-1 <?= flip_compact_book_style($book["id"]) ?>">
+                                    <p><?= htmlspecialchars($book["title"]);?> </p>
+                                    <button class="ms-auto" type="submit" name="book_request_submit" value="<?= $book["id"] ?>">Details</button>
+                                </li>
+                            <?php endforeach ?>
+                        </ul>
+                    </div>
+                <?php endfor ?>
+                </div>
             </form>
         </div>
-        <form method="POST" action="">
-            <!-- Fetches random books from the db, also this means it can show multiple books since its using rand() for every column, in a real production scenario this is very unlikely to show up. -->
-            <div class="d-flex">
-            <?php for($i = 0; $i < 5; $i++): 
-                $query = $pdo->query("SELECT * FROM books ORDER BY RAND() LIMIT 5");
-                $books = $query->fetchAll();
-                ?>
-                <div class="row ">
-                    <ul style="list-style-type: none;">
-                        <?php foreach($books as $book): ?>
-                            <li class="d-flex <?= flip_compact_book_style($book["id"]) ?>">
-                                <p><?= htmlspecialchars($book["title"]);?> </p>
-                                <button class="ms-auto" type="submit" name="book_request_submit" value="<?= $book["id"] ?>">Details</button>
-                            </li>
-                        <?php endforeach ?>
-                    </ul>
-                </div>
-            <?php endfor ?>
-            </div>
-        </form>
+
     </div>
 
 

@@ -44,6 +44,22 @@ p{
 }
 
 .book-card{
+    padding: 0.5rem;
+    margin: 0.5rem;
+    
+    border: var(--border-color);
+    background-color: var(--book-color);
+    border-radius: 10px;
+
+    backdrop-filter: blur(30px);
+    
+
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.3);
+}
+
+.btn-primary-custom{
+    padding: 0.5rem;
+    margin: 0.5rem;
     
     border: var(--border-color);
     background-color: var(--book-color);
@@ -51,7 +67,31 @@ p{
 
     backdrop-filter: blur(30px);
 
+    transform: scale(1);
+
     box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.3);
+
+    /* This fixes the scaling to be from the center and not top right */
+    transform-origin: center;
+
+    transition: all ease 0.1s !important; /* doesnt work without important for some reason, even though its not a bootstrap element?*/
+}
+
+.btn-primary-custom:hover{
+    padding: 0.5rem;
+    margin: 0.5rem;
+
+    transform-origin: center;
+    
+    border: var(--border-color);
+    background-color: var(--book-color);
+    border-radius: 15px;
+
+    backdrop-filter: blur(30px);
+
+    transform: scale(1.1);
+
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
 }
 
 .footer_card{
