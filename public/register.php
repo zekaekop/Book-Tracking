@@ -10,9 +10,12 @@ $register_status = "";
 ?>
 
 <div class="container">
+    <div class="book-card mb-4">
 
-    <h1>Register page</h1>
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda distinctio cupiditate quibusdam iste magnam officia in maiores laboriosam obcaecati, quas repellat itaque, optio quidem. Incidunt dolorem cum reiciendis placeat fuga?</p>
+    <div class="background-shadow-shade">
+        <h1>Register page</h1>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda distinctio cupiditate quibusdam iste magnam officia in maiores laboriosam obcaecati, quas repellat itaque, optio quidem. Incidunt dolorem cum reiciendis placeat fuga?</p>
+    </div>
 
     <hr>
 
@@ -28,11 +31,14 @@ $register_status = "";
         <br>
         <input type="password" name="repeat_password" placeholder="Repeat Password" required>
         <br>
-        <button type="submit" name="register_submit">Register</button>
+        
+        <button class="btn btn-primary-custom" type="submit" name="register_submit">Register</button>
 
         <a href="login.php"><small>have an account?</small></a>
 
     </form>
+
+    </div>
 </div>
 
 <?php require_once __DIR__ . '/../src/template/base_bottom.php' ?>
