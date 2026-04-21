@@ -36,7 +36,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         <h3>User Info</h3>
 
-        <table class="">
+        <table class="table-responsive">
             <thead>
                 <tr>
                     <th>Username</th>
